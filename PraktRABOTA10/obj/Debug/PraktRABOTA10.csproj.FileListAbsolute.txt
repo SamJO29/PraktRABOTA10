@@ -1,0 +1,7 @@
+C:\Users\WS\source\repos\PraktRABOTA10\bin\Debug\PraktRABOTA10.exe.config
+C:\Users\WS\source\repos\PraktRABOTA10\bin\Debug\PraktRABOTA10.exe
+C:\Users\WS\source\repos\PraktRABOTA10\bin\Debug\PraktRABOTA10.pdb
+C:\Users\WS\source\repos\PraktRABOTA10\obj\Debug\PraktRABOTA10.csproj.AssemblyReference.cache
+C:\Users\WS\source\repos\PraktRABOTA10\obj\Debug\PraktRABOTA10.csproj.CoreCompileInputs.cache
+C:\Users\WS\source\repos\PraktRABOTA10\obj\Debug\PraktRABOTA10.exe
+C:\Users\WS\source\repos\PraktRABOTA10\obj\Debug\PraktRABOTA10.pdb
