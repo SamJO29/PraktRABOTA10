@@ -7,21 +7,21 @@ class NumberClass
 
     public NumberClass(int value) => Value = value;
 
-    // Перегрузка операторов & и |
+   
     public static NumberClass operator &(NumberClass a, NumberClass b)
         => new NumberClass(a.Value & b.Value);
 
     public static NumberClass operator |(NumberClass a, NumberClass b)
         => new NumberClass(a.Value | b.Value);
 
-    // Перегрузка операторов true и false
+    
     public static bool operator true(NumberClass obj)
         => obj.Value == 2 || obj.Value == 3 || obj.Value == 5 || obj.Value == 7;
 
     public static bool operator false(NumberClass obj)
         => obj.Value < 1 || obj.Value > 10;
 
-    // Для удобства вывода
+   
     public override string ToString() => Value.ToString();
 }
 
@@ -29,14 +29,14 @@ class Program
 {
     static void Main()
     {
-        var num1 = new NumberClass(3);  // true
-        var num2 = new NumberClass(8);  // false
-        var num3 = new NumberClass(5);  // true
+        var num1 = new NumberClass(3);  
+        var num2 = new NumberClass(8);  
+        var num3 = new NumberClass(5);  
 
         Console.WriteLine($"num1: {num1}, num2: {num2}, num3: {num3}");
         Console.WriteLine();
 
-        // Использование операторов && и ||
+        
         if (num1 && num3)
             Console.WriteLine($"num1 && num3: true (оба истинные)");
 
@@ -163,7 +163,7 @@ class Program
 
 using System;
 
-// Определение интерфейсов
+
 interface IFirst
 {
     string Property { get; set; }
@@ -178,7 +178,7 @@ interface ISecond
     void Method();
 }
 
-// Абстрактный класс
+
 abstract class AbstractBase
 {
     public abstract string Property { get; set; }
@@ -186,55 +186,55 @@ abstract class AbstractBase
     public abstract void Method();
 }
 
-// Класс, реализующий абстрактный класс и интерфейсы с явной реализацией
+
 class MyClass : AbstractBase, IFirst, ISecond
 {
     private string _property;
     private int[] _data = new int[10];
 
-    // Явная реализация свойства IFirst
+    
     string IFirst.Property
     {
         get => _property + " (First)";
         set => _property = value;
     }
 
-    // Явная реализация свойства ISecond
+    
     string ISecond.Property
     {
         get => _property + " (Second)";
         set => _property = value;
     }
 
-    // Реализация свойства из абстрактного класса
+    
     public override string Property
     {
         get => _property;
         set => _property = value;
     }
 
-    // Явная реализация индексатора IFirst
+    
     int IFirst.this[int index]
     {
         get => _data[index];
         set => _data[index] = value;
     }
 
-    // Явная реализация индексатора ISecond
+    
     int ISecond.this[int index]
     {
         get => _data[index];
         set => _data[index] = value;
     }
 
-    // Реализация индексатора из абстрактного класса
+    
     public override int this[int index]
     {
         get => _data[index];
         set => _data[index] = value;
     }
 
-    // Явная реализация метода IFirst
+   
     void IFirst.Method()
     {
         Console.WriteLine("Method from IFirst");
@@ -244,7 +244,7 @@ class MyClass : AbstractBase, IFirst, ISecond
         Console.WriteLine($"Data[0] after modification: {_data[0]}");
     }
 
-    // Явная реализация метода ISecond
+   
     void ISecond.Method()
     {
         Console.WriteLine("Method from ISecond");
@@ -254,7 +254,7 @@ class MyClass : AbstractBase, IFirst, ISecond
         Console.WriteLine($"Data[1] after modification: {_data[1]}");
     }
 
-    // Реализация метода из абстрактного класса
+    
     public override void Method()
     {
         Console.WriteLine("Method from AbstractBase");
@@ -263,12 +263,12 @@ class MyClass : AbstractBase, IFirst, ISecond
         _data[2] = 300;
         Console.WriteLine($"Data[2] after modification: {_data[2]}");
         
-        // Вызов методов интерфейсов через явную реализацию (можно через приведение)
+       
         
         ((IFirst)this).Method();
         ((ISecond)this).Method();
         
-        // Также можно вызвать свойства и индексаторы через приведение к интерфейсу:
+       
         
         ((IFirst)this).Property = "Value for First";
         ((ISecond)this).Property = "Value for Second";
@@ -292,7 +292,7 @@ class Program
 	{
 		MyClass obj = new MyClass();
 
-		// Использование через объектную переменную:
+		
 		Console.WriteLine("Работа через объектную переменную:");
 		obj.Property = "Object Property";
 		Console.WriteLine($"obj.Property: {obj.Property}");
@@ -304,7 +304,7 @@ class Program
 
 		Console.WriteLine("\nРабота через интерфейсные переменные:");
 
-		// Через интерфейс IFirst:
+		
 		IFirst firstInterface = obj;
 		firstInterface.Property = "Interface First Property";
 		Console.WriteLine($"firstInterface.Property: {firstInterface.Property}");
@@ -314,7 +314,7 @@ class Program
 
 		Console.WriteLine();
 
-		// Через интерфейс ISecond:
+		
 		ISecond secondInterface = obj;
 		secondInterface.Property = "Interface Second Property";
 		Console.WriteLine($"secondInterface.Property: {secondInterface.Property}");
