@@ -1,52 +1,4 @@
 ﻿
-using System;
-
-class NumberClass
-{
-    public int Value { get; set; }
-
-    public NumberClass(int value) => Value = value;
-
-   
-    public static NumberClass operator &(NumberClass a, NumberClass b)
-        => new NumberClass(a.Value & b.Value);
-
-    public static NumberClass operator |(NumberClass a, NumberClass b)
-        => new NumberClass(a.Value | b.Value);
-
-    
-    public static bool operator true(NumberClass obj)
-        => obj.Value == 2 || obj.Value == 3 || obj.Value == 5 || obj.Value == 7;
-
-    public static bool operator false(NumberClass obj)
-        => obj.Value < 1 || obj.Value > 10;
-
-   
-    public override string ToString() => Value.ToString();
-}
-
-class Program
-{
-    static void Main()
-    {
-        var num1 = new NumberClass(3);  
-        var num2 = new NumberClass(8);  
-        var num3 = new NumberClass(5);  
-
-        Console.WriteLine($"num1: {num1}, num2: {num2}, num3: {num3}");
-        Console.WriteLine();
-
-        
-        if (num1 && num3)
-            Console.WriteLine($"num1 && num3: true (оба истинные)");
-
-        if (num1 || num2)
-            Console.WriteLine($"num1 || num2: true (хотя бы один истинный)");
-
-        if (!num2)
-            Console.WriteLine($"!num2: true (num2 ложный)");
-    }
-}
 
 
 
@@ -334,18 +286,96 @@ class Program
 
 
 
-
-
-
-
 Задача 4
 
+﻿
+using System;
+
+class NumberClass
+{
+    public int Value { get; set; }
+
+    public NumberClass(int value) => Value = value;
+
+   
+    public static NumberClass operator &(NumberClass a, NumberClass b)
+        => new NumberClass(a.Value & b.Value);
+
+    public static NumberClass operator |(NumberClass a, NumberClass b)
+        => new NumberClass(a.Value | b.Value);
+
+    
+    public static bool operator true(NumberClass obj)
+        => obj.Value == 2 || obj.Value == 3 || obj.Value == 5 || obj.Value == 7;
+
+    public static bool operator false(NumberClass obj)
+        => obj.Value < 1 || obj.Value > 10;
+
+   
+    public override string ToString() => Value.ToString();
+}
+
+class Program
+{
+    static void Main()
+    {
+        var num1 = new NumberClass(3);  
+        var num2 = new NumberClass(8);  
+        var num3 = new NumberClass(5);  
+
+        Console.WriteLine($"num1: {num1}, num2: {num2}, num3: {num3}");
+        Console.WriteLine();
+
+        
+        if (num1 && num3)
+            Console.WriteLine($"num1 && num3: true (оба истинные)");
+
+        if (num1 || num2)
+            Console.WriteLine($"num1 || num2: true (хотя бы один истинный)");
+
+        if (!num2)
+            Console.WriteLine($"!num2: true (num2 ложный)");
+    }
+}
+
+
+Задача 5
+
+ internal class Program
+ {
+
+     class Clock
+     {
+         public int Hours { get; set; }
+
+        
+         public static implicit operator Clock(int value)
+         {
+             return new Clock { Hours = value % 24 };
+         }
+
+         
+         public static explicit operator int(Clock clock)
+         {
+             return clock.Hours;
+         }
+     }
 
 
 
+     static void Main(string[] args)
+     {
 
+        
+         Clock clock = 34;
+         Console.WriteLine($"Часы: {clock.Hours}");
 
+         
+         int val = (int)clock; 
+         Console.WriteLine($"Значение: {val}"); 
 
+     }
+ }
 
 
 
