@@ -378,6 +378,150 @@ class Program
  }
 
 
+Задача 6
+
+
+ class Program
+ {
+
+     static void Main()
+     {
+         Celcius c = new Celcius { Gradus = 25 };
+         Fahrenheit f = (Fahrenheit)c; 
+         Console.WriteLine($"{c.Gradus} По цельсию = {f.Gradus}Фаренгейту");
+
+         Fahrenheit f2 = new Fahrenheit { Gradus = 100 };
+         Celcius c2 = (Celcius)f2; 
+         Console.WriteLine($"{f2.Gradus} Фаренгейту = {c2.Gradus} По цельсию"); 
+     }
+
+
+     class Celcius
+     {
+         public double Gradus { get; set; }
+
+         
+         public static explicit operator Celcius(Fahrenheit f)
+         {
+             return new Celcius { Gradus = 5.0 / 9 * (f.Gradus - 32) };
+         }
+     }
+
+     class Fahrenheit
+     {
+         public double Gradus { get; set; }
+
+        
+         public static explicit operator Fahrenheit(Celcius c)
+         {
+             return new Fahrenheit { Gradus = 9.0 / 5 * c.Gradus + 32 };
+         }
+     }
+
+
+ }
+
+Задача 7
+
+ class program
+ {
+
+
+     class Dollar
+     {
+         public decimal Sum { get; set; }
+
+         
+         public static implicit operator Euro(Dollar dollar)
+         {
+             return new Euro { Sum = dollar.Sum / 1.14m };
+         }
+     }
+
+     class Euro
+     {
+         public decimal Sum { get; set; }
+
+         
+         public static explicit operator Dollar(Euro euro)
+         {
+             return new Dollar { Sum = euro.Sum * 1.14m };
+         }
+     }
+
+     static void Main(string[] args)
+     {
+        
+         Dollar usd = new Dollar { Sum = 100 };
+         Euro eur = usd; 
+         Console.WriteLine($"{usd.Sum} USD = {eur.Sum} EUR"); 
+
+         
+         Euro eur2 = new Euro { Sum = 100 };
+         Dollar usd2 = (Dollar)eur2; 
+         Console.WriteLine($"{eur2.Sum} EUR = {usd2.Sum} USD");
+     }
+
+ }
+
+Задача 8
+
+ class Program
+
+
+  {
+
+      class TextHolder
+      {
+          public string Text { get; set; }
+
+         
+          public static explicit operator int(TextHolder holder)
+          {
+              return holder.Text.Length;
+          }
+
+          
+          public static explicit operator char(TextHolder holder)
+          {
+              return holder.Text.Length > 0 ? holder.Text[0] : '\0';
+          }
+
+          
+          public static implicit operator TextHolder(int length)
+          {
+              return new TextHolder { Text = new string('A', length) };
+          }
+      }
+
+
+
+      static void Main(string[] args)
+      {
+
+
+     
+              TextHolder textObj = new TextHolder { Text = "Hello" };
+
+              
+              int length = (int)textObj;
+              Console.WriteLine($"Длина строки: {length}"); 
+
+             
+              char firstChar = (char)textObj;
+              Console.WriteLine($"Первый символ: {firstChar}");
+
+              
+              TextHolder aString = 5; 
+              Console.WriteLine($"Строка из 'A': {aString.Text}"); 
+          
+      }
+
+
+
+  }
+
+
 
 
 
